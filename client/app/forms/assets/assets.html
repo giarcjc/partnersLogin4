@@ -1,0 +1,84 @@
+<form>
+    <fieldset>
+        <div>
+            <label>Are you adding missing documents to the previously submitted asset?
+                <input type="radio" name="addingDocs" value="yes"> yes
+                <input type="radio" name="addingDocs" value="no"> no
+            </label>
+        </div>
+        <div>
+            <label>1. Asset Name
+                <input name="assetName" placeholder="Asset" required autofocus>
+            </label>
+        </div>
+        <div>
+            <label>2. Effective Start Date - Effective End Date (optional)
+                <input type="date" name="effectiveStart">
+                <input type="date" name="effectiveEnd">
+            </label>
+        </div>
+        <div>
+            <label>3. Fundraising Amount (optional)
+                <input name="amount">
+            </label>
+        </div>
+        <div>
+            <label>
+            4. PE Structure?
+            <select>
+                <option>Select One</option>
+                <option>Corporate Stock (C-Corp)</option>
+                <option>LLC</option>
+                <option>LP</option>
+                <option>Convertible Note</option>
+            </select>
+            </label>
+        </div>
+        <div>
+            <label>5. Document Upload</label>
+            <table>
+                <tr>
+                    <td>
+                        Certificate of Corporation<br/>
+                        Could also be Article of Incorporation, Certificate/Article of organization, or Certificate of Partnership
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Offering Memorandum<br/>
+                        Also referred as Offering Materials
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Upload one of the following:
+                        <input type="checkbox"> Stock Purchase Agreement
+                        <input type="checkbox"> Subscription Agreement
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Certificate of Good Standing with Secretary of States
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Bylaws
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Alternative Equity Investment Notification (PENSCO form)<br/>
+                        Don't have this form? <a href="">Download Now</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <label>6. Comments
+                <textarea></textarea>
+            </label>
+        </div>
+        <input type="submit">
+    </fieldset>
+</form>

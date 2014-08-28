@@ -1,0 +1,124 @@
+<div class="text-left">
+<form>
+    <div class="form-group">
+        <ol class="text-left">
+            <div class="row">
+                <div class="col-md-3">
+                    <li><label>Asset Name</label>
+                        <input type="text" ng-model="investForm.assetName" class="form-control" name="assetName" placeholder="Asset Name" required />
+                    </li>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-4 col-sm-2">
+                    <li><label>Client First Name</label>
+                        <input type="text" ng-model="investForm.clientFirstName" class="form-control" name="clientFirstName" placeholder="Client First Name" required />
+                    </li>
+                </div>
+                <div class="ol-xs-6 col-sm-4">
+                    <li><label>Client Last Name</label>
+                        <input type="text" ng-model="investForm.clientLastName" class="form-control" name="clientLastName" placeholder="Client Last Name" required />
+                    </li>
+                </div>
+
+                <div class="col-xs-4 col-sm-2">
+                    <li><label>E-mail Address</label>
+                        <input type="email" ng-model="investForm.email" class="form-control" name="email" placeholder="Email" required/>
+                        <div ng-show="form.email.$dirty && form.email.$invalid">Invalid:
+                            <span ng-show="form.email.$error.required">Tell us your email.</span>
+                            <span ng-show="form.email.$error.email">This is not a valid email.</span>
+                        </div>
+                    </li>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-4 col-sm-2">
+                    <li><label>Investment Amout</label>
+                        $<input type="text" ng-model="investForm.investmentAmount" class="form-control" name="investmentAmount" placeholder="Investment Amount" required />
+                    </li>
+                </div>
+                <div class="col-xs-5 col-sm-3">
+                    <li><label>New or Existing PENSCO client?</label>
+                        <div class="row">
+                            <div class="col-xs-2 col-sm-1">
+                                <input type="radio" ng-model="investForm.existingAccount" name="existingAccountYes" value="yes" />Yes
+                            </div>
+                            <div class="col-xs-2 col-sm-1">
+                                <input type="radio" ng-model="investForm.existingAccount" name="existingAccountNo" value="no" />No
+                            </div>
+                    </li>
+                </div>
+                <div class="col-xs-4 col-sm-2">
+                    <li><label>Pensco Account Number</label>
+                        <input type="text" ng-model="investForm.penscoAcctNum" class="form-control" name="penscoAcctNum" placeholder="PENSCO Account Number" />
+                    </li>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-8">
+                    <li><label>Document Upload</label>
+                        <table>
+                            <tr>
+                                <td>
+                                    <p><strong>Alternative Equity Investment Notification (PENSCO Form)</strong></p>
+
+                                    <p><em>Don't have this form?</em><a href="">Download Now</a></p>
+                                </td>
+                                <td>
+                                    <div ng-file-select="onFileSelect($files)" data-multiple="true" title="select file"
+                                         onclick="this.value = null" class="upload-button" style="position: relative;">Browse Files To Upload
+                                        <input type="file" ng-file-select="onFileSelect($files)" data-multiple="true" title="select file"
+                                               onclick="this.value = null" class="upload-button" multiple="multiple"
+                                               style="top: 0px; bottom: 0px; left: 0px; right: 0px; width: 100%; opacity: 0; position: absolute;"></div>
+                                </td>
+                                <td>
+                                    <div ng-show="dropSupported" class="drop-box" ng-file-drop="onFileSelect($files)"
+                                         ng-file-drop-available="dropSupported=true" ng-file-drag-over-class="dragOverClass($event)"
+                                         ng-file-drag-over-delay="100">Drag files <div>here</div> from your computer</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+
+                    <li><label>Document Upload</label>
+                        <table>
+                            <tr>
+                                <td>
+                                    <p><strong>Alternative Equity Investment Authorization (PENSCO Form)</strong></p>
+
+                                    <p><em>Don't have this form?</em><a href="">Download Now</a></p>
+                                </td>
+                                <td>
+                                    <div ng-file-select="onFileSelect($files)" data-multiple="true" title="select file"
+                                         onclick="this.value = null" class="upload-button" style="position: relative;">Browse Files To Upload
+                                        <input type="file" ng-file-select="onFileSelect($files)" data-multiple="true" title="select file"
+                                               onclick="this.value = null" class="upload-button" multiple="multiple"
+                                               style="top: 0px; bottom: 0px; left: 0px; right: 0px; width: 100%; opacity: 0; position: absolute;"></div>
+                                </td>
+                                <td>
+                                    <div ng-show="dropSupported" class="drop-box" ng-file-drop="onFileSelect($files)"
+                                         ng-file-drop-available="dropSupported=true" ng-file-drag-over-class="dragOverClass($event)"
+                                         ng-file-drag-over-delay="100">Drag files <div>here</div> from your computer</div>
+                                </td>
+                            </tr>
+                        </table>
+                    </li>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-8">
+                <li><label>Comments</label>
+                        <textarea ng-model="investForm.comments" name="comments" ></textarea>
+                    </li>
+                </div>
+            </div>
+        </ol>
+    </div>
+    <button type="submit" class="btn btn-primary" ng-click="submitInvestment()">Submit</button>
+</form>
+</div>
