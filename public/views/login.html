@@ -1,32 +1,31 @@
 <p>(Demo: <a href="#/register">click here</a> to register new user, then login)</p>
 <div class="container">
 
-    <div class="col-sm-6 col-sm-offset-3">
+    <div class="col-md-7">
 
-        <h1><span class="fa fa-sign-in"></span> Welcome To Pensco Partner Portal</h1>
+        <h2><span class="fa fa-sign-in"></span> Welcome To Pensco Partner Portal</h2>
 
         <p>Please enter the sign-in information we sent you :</p>
 
 
             <form ng-submit="login()">
-                <p>
+                <div class="form-group">
                     <label class="control-label">User Name</label>
                     <input type="text" placeholder="Username" ng-model="user.username" />
-                </p>
-                <p>
+                </div>
+                <div class="form-group">
                     <label class="control-label">Password</label>
                     <input type="password" placeholder="Password" ng-model="user.password" /><br/>
-                </p>
-                <p>
-                    <button type="submit" class="btn btn-warning btn-lg">Sign In</button>
-                </p>
+               </div>
+
+               <button type="submit" class="btn btn-warning btn-lg">Sign In</button>
+
             </form>
+    </div>
 
-        <div id="loginPageText">
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
+    <div id="loginPageText" class="col-md-4">
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar tempor. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
 
-            <p>penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
-        </div>
-
+        <p>penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nam fermentum, nulla luctus pharetra vulputate, felis tellus mollis orci, sed rhoncus sapien nunc eget odio.</p>
     </div>
 </div>
