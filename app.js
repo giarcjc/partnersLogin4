@@ -4,6 +4,14 @@ var path = require('path');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var flash = require('connect-flash');
+
+var morgan = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+var methodOverride = require('method-override');
+var errorhandler = require('errorhandler');
+
 var LocalStrategy = require('passport-local').Strategy;
 
 
@@ -131,21 +139,35 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
-app.use(express.favicon());
-app.use(express.logger('dev'));
-app.use(express.cookieParser()); 
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(express.session({ secret: 'securedsession' }));
+//app.use(express.favicon()); // express 3
+
+//app.use(express.logger('dev'));  // express 3
+app.use(morgan('dev')); // log every request to the console (express 4)
+
+// express 3
+//app.use(express.cookieParser());
+//app.use(express.bodyParser());
+//app.use(express.methodOverride());
+
+
+// express 4
+app.use(cookieParser()); // read cookies (needed for auth
+app.use(bodyParser()); // get info from html forms
+app.use(methodOverride()); // use HTTP verbs such as PUT or DELETE in places where the client doesn't support it.
+
+
+//app.use(express.session({ secret: 'securedsession' }));  // express 3
+app.use(session({ secret: 'jazzflute'}));  // express 4
+
 app.use(passport.initialize()); // Add passport initialization
 app.use(passport.session());    // Add passport initialization
 app.use(flash()); // use connect-flash for flash messages stored in session
-app.use(app.router);
+//app.use(app.router);   // express 3
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+  app.use(errorhandler());
 }
 
 //==================================================================
