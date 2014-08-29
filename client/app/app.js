@@ -3,8 +3,9 @@
 /**********************************************************************
  * Angular Application
  **********************************************************************/
-var app = angular.module('partners', ['ngResource'])
-  .config(function($routeProvider, $locationProvider, $httpProvider) {
+var app = angular.module('partners', ['ngResource', 'ngRoute', 'ui.bootstrap']);
+
+app.config(function($routeProvider, $locationProvider, $httpProvider) {
     //================================================
     // Check if the user is connected
     //================================================
@@ -67,8 +68,29 @@ var app = angular.module('partners', ['ngResource'])
         }
       })
        .when('/home', {
-            templateUrl: 'app/home/home.html',
-            controller: 'HomeCtrl',
+        templateUrl: 'app/home/home.html',
+        controller: 'HomeCtrl',
+        resolve: {
+          loggedin: checkLoggedin
+        }
+      })
+      .when('/assets', {
+        templateUrl: 'app/forms/assets/assets.html',
+        controller: 'AssetsCtrl',
+        resolve: {
+            loggedin: checkLoggedin
+        }
+      })
+      .when('/investment', {
+        templateUrl: 'app/forms/investment/investment.html',
+        controller: 'InvestmentCtrl',
+        resolve: {
+            loggedin: checkLoggedin
+        }
+      })
+        .when('/main', {
+            templateUrl: 'app/navTemplate.html',
+            controller: 'AdminCtrl',
             resolve: {
                 loggedin: checkLoggedin
             }
@@ -77,13 +99,16 @@ var app = angular.module('partners', ['ngResource'])
         templateUrl: 'app/login/login.html',
         controller: 'LoginCtrl'
       })
+      .when('/register', {
+        templateUrl: 'app/register.html'
+       })
       .otherwise({
         redirectTo: '/'
       });
     //================================================
 
   }) // end of config()
-  .run(function($rootScope, $http){
+app.run(function($rootScope, $http){
     $rootScope.message = '';
 
     // Logout function is available in any pages
@@ -105,11 +130,12 @@ app.controller('LoginCtrl', function($scope, $rootScope, $http, $location) {
   $scope.login = function(){
     $http.post('/login', {
       username: $scope.user.username,
-      password: $scope.user.password
+      password: $scope.user.password,
     })
     .success(function(user){
       // No error: authentication OK
-      $rootScope.message = 'Authentication successful!';
+//     $rootScope.message = 'Authentication successful!';
+     $rootScope.message = '';
       $location.url('/home');
     })
     .error(function(){
@@ -120,18 +146,3 @@ app.controller('LoginCtrl', function($scope, $rootScope, $http, $location) {
   };
 });
 
-
-
-/**********************************************************************
- * Admin controller
- **********************************************************************/
-app.controller('AdminCtrl', function($scope, $http) {
-  // List of users got from the server
-  $scope.users = [];
-
-  // Fill the array to display it in the page
-  $http.get('/users').success(function(users){
-    for (var i in users)
-      $scope.users.push(users[i]);
-  });
-});

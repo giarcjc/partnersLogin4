@@ -3,16 +3,17 @@ Partners Login Demo:
  
  The Good: 
  - Uses passport to authenticate against mongoDB via mongoose
- - uses angular routes instead of relying on server declared routes
+ - uses angular (v1.2.23), ngRoute instead of relying on server declared routes
  - now uses express 4
+ - conforms (more or less) to project structure
  
  The Bad:
- - does not conform to existing app structure and routing
+
  - does not use handlebars for pretty urls, 
- - individual controllers for functionality aren't getting picked up from their respective .js files 
+ 
  
  To Do: 
- - fix routing issues, controller issues, etc.
+ - finish integrating into project
 
 
 To run:

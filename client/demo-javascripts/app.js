@@ -57,50 +57,50 @@ app.config(function($routeProvider, $locationProvider, $httpProvider) {
     //================================================
     $routeProvider
       .when('/', {
-            templateUrl: 'views/login.html',
+            templateUrl: 'app/login.html',
             controller: 'LoginCtrl'
       })
       .when('/admin', {
-        templateUrl: 'views/admin/admin.html',
+        templateUrl: 'app/admin/admin.html',
         controller: 'AdminCtrl',
         resolve: {
           loggedin: checkLoggedin
         }
       })
        .when('/home', {
-        templateUrl: 'views/home/home.html',
+        templateUrl: 'app/home/home.html',
         controller: 'HomeCtrl',
         resolve: {
           loggedin: checkLoggedin
         }
       })
       .when('/assets', {
-        templateUrl: 'views/forms/assets/assets.html',
+        templateUrl: 'app/forms/assets/assets.html',
         controller: 'AssetsCtrl',
         resolve: {
             loggedin: checkLoggedin
         }
       })
       .when('/investment', {
-        templateUrl: 'views/forms/investment/investment.html',
+        templateUrl: 'app/forms/investment/investment.html',
         controller: 'InvestmentCtrl',
         resolve: {
             loggedin: checkLoggedin
         }
       })
         .when('/main', {
-            templateUrl: 'views/navTemplate.html',
+            templateUrl: 'app/navTemplate.html',
             controller: 'AdminCtrl',
             resolve: {
                 loggedin: checkLoggedin
             }
         })
       .when('/login', {
-        templateUrl: 'views/login.html',
+        templateUrl: 'app/login.html',
         controller: 'LoginCtrl'
       })
       .when('/register', {
-        templateUrl: 'views/register.html'
+        templateUrl: 'app/register.html'
        })
       .otherwise({
         redirectTo: '/'

@@ -137,7 +137,7 @@ var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
+app.set('app', __dirname + '/app');
 app.set('view engine', 'ejs');
 //app.use(express.favicon()); // express 3
 
@@ -163,7 +163,7 @@ app.use(passport.initialize()); // Add passport initialization
 app.use(passport.session());    // Add passport initialization
 app.use(flash()); // use connect-flash for flash messages stored in session
 //app.use(app.router);   // express 3
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'client')));
 
 // development only
 if ('development' == app.get('env')) {
